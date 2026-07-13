@@ -1,0 +1,12 @@
+name: BetterRecipeMemoryPlugin
+main: io.github.kuohsuanlo.betterrecipememory.BetterRecipeMemoryPlugin
+version: ${version}
+api-version: '1.21'
+load: STARTUP
+description: Companion plugin for the BetterRecipeMemory datapack - suppresses the one-time orphan recipe-advancement cleanup log flood.
+author: kuohsuanlo
+website: https://github.com/kuohsuanlo/BetterRecipeMemory-Datapack
+commands:
+  brm:
+    description: BetterRecipeMemory — author info (/brm about|help|version)
+    usage: /brm [about|help|version]

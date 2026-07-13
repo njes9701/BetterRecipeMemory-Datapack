@@ -1,0 +1,3 @@
+paper-plugin/target/
+__pycache__/
+*.pyc
