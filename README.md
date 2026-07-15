@@ -1,4 +1,4 @@
-# BetterRecipeMemory
+# BetterRecipeMemory — Folia 26.2
 
 移除原版約 1,572 條**配方成就**(`minecraft:recipes/*`),把每位上線玩家物化的成就物件從
 **1688 → 127**(記憶體 -92%);同時用「首登一次性觸發」把每位玩家的**配方書塞滿** ——
