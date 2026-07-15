@@ -21,7 +21,7 @@ public class BetterRecipeMemoryPlugin extends JavaPlugin {
     static final String AUTHOR_LINE =
             "crafted by 廢土貓大 LogoCat · 廢土 · mcfallout.net";
     static final String REPO =
-            "github.com/kuohsuanlo/BetterRecipeMemory-Datapack";
+            "github.com/njes9701/BetterRecipeMemory-Datapack";
 
     @Override
     public void onLoad() {
@@ -38,7 +38,7 @@ public class BetterRecipeMemoryPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // 後台作者橫幅 —— datapack + 配套外掛同屬一個作品,一併署名。
-        getLogger().info("BetterRecipeMemoryPlugin (datapack companion) —— " + AUTHOR_LINE);
+        getLogger().info("BetterRecipeMemoryFolia (Folia/Paper datapack companion) —— " + AUTHOR_LINE);
         getLogger().info(REPO);
         if (getCommand("brm") != null) {
             getCommand("brm").setExecutor(this);
@@ -56,7 +56,7 @@ public class BetterRecipeMemoryPlugin extends JavaPlugin {
                 s.sendMessage(ChatColor.YELLOW + "/brm help    " + ChatColor.GRAY + "— this list");
                 return true;
             case "version":
-                s.sendMessage(ChatColor.GOLD + "BetterRecipeMemoryPlugin "
+                s.sendMessage(ChatColor.GOLD + "BetterRecipeMemoryFolia "
                         + ChatColor.WHITE + getDescription().getVersion());
                 return true;
             case "about":

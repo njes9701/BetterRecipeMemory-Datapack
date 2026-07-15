@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.kuohsuanlo</groupId>
-  <artifactId>betterrecipememory</artifactId>
+  <artifactId>betterrecipememory-folia</artifactId>
   <version>26.2-1</version>
-  <name>BetterRecipeMemoryPlugin</name>
-  <url></url>
+  <name>BetterRecipeMemoryFolia</name>
+  <url>https://github.com/njes9701/BetterRecipeMemory-Datapack</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,11 +18,12 @@
   </repositories>
 
   <dependencies>
-    <!--Paper API-->
+    <!-- Folia API extends the Paper API and catches accidental use of unsupported
+         scheduler APIs while keeping this plugin usable on both server types. -->
 	<dependency>
-	    <groupId>io.papermc.paper</groupId>
-	    <artifactId>paper-api</artifactId>
-	    <version>26.2.build.26-alpha</version>
+	    <groupId>dev.folia</groupId>
+	    <artifactId>folia-api</artifactId>
+	    <version>1.21.11-R0.1-SNAPSHOT</version>
 	    <scope>provided</scope>
 	</dependency>
 	<!-- log4j-core: Paper runtime 內建,僅編譯期需要 -->
@@ -35,7 +36,7 @@
   </dependencies>
 
   <build>
-    <finalName>BetterRecipeMemoryPlugin-${project.version}</finalName>
+    <finalName>BetterRecipeMemoryFolia-${project.version}</finalName>
     <resources>
       <resource>
         <directory>src/main/resources</directory>

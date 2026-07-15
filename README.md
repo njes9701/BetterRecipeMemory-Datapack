@@ -6,16 +6,18 @@
 
 *crafted by 廢土貓大 LogoCat · 廢土 · mcfallout.net*
 
+> **Folia 26.2 版本:** 由 **Codex** 移植、建置並在 Folia 26.2 測試伺服器實機驗證。
+
 本 repo 含兩個部分:
 
 | 目錄 | 產物 | 角色 |
 |---|---|---|
 | [`datapack/`](datapack/) | `dist/BetterRecipeMemory.zip` | **主體** —— 移除配方成就 + 首登塞滿配方書 |
-| [`paper-plugin/`](paper-plugin/) | `dist/BetterRecipeMemoryPlugin-26.2-1.jar` | **配套** —— 吞掉 datapack 造成的「孤兒成就」log 洪水(成就存檔開=可選;關=必裝,見 E4) |
+| [`paper-plugin/`](paper-plugin/) | `dist/BetterRecipeMemoryFolia-26.2-1.jar` | **Folia / Paper 配套** —— 吞掉 datapack 造成的「孤兒成就」log 洪水(成就存檔開=可選;關=必裝,見 E4) |
 
-- 適用:Paper / MC 26.2(pack_format 107;其他版本見〔技術版〕的 pack_format 一節)
+- 適用:Folia / Paper / MC 26.2(pack_format 107;其他版本見〔技術版〕的 pack_format 一節)
 - 安裝:zip 丟進主世界 `datapacks/`;jar 丟進 `plugins/`;重啟生效
-- 實測:一台外掛數量龐大的 Paper 26.2 伺服器通過 —— `Loaded 1688 advancements → 127`、recipes 數不變、零載入錯誤
+- 實測:Paper 26.2 與 Folia 26.2 伺服器通過 —— `Loaded 1688 advancements → 127`、recipes 數不變、零載入錯誤
 
 ### 作者 / 查詢指令
 
@@ -123,14 +125,15 @@ datapack `filter`(MC 1.19+ 官方機制)把更低優先層(含原版內建 pack)
 - `rewards.function` = `fallout:fill_recipe_book` → 以該玩家身分執行 `recipe give @s *`
 - 達成狀態持久化於玩家成就檔;配方書清單持久化於玩家檔 `recipeBook` → **同一玩家永不重複觸發,零週期工作**
 
-### 配套外掛機制(`paper-plugin/`)
+### Folia / Paper 配套外掛機制(`paper-plugin/`)
 
 - **一個 log4j filter,別無其他**:`onLoad` 時掛到 root LoggerConfig(vanilla 的
   `net.minecraft.server.PlayerAdvancements` logger 沒有獨立 config,事件流經 root,攔得到)
 - 只 `DENY` 同時滿足「以 `Ignored advancement '` 開頭」且「含 `doesn't exist anymore`」的訊息;其餘一律 `NEUTRAL`
 - 失敗安全:install 包在 `catch (Throwable)`,掛不上頂多回到「有噪音」的原狀
 - 自測掛鉤:`-Dbetterrecipememory.selftest=true` 開機時對 vanilla logger 丟一則同款誘餌訊息;filter 有效則該行不出現在 log
-- 建置:`JAVA_HOME=<jdk25> mvn package`(paper-api 26.2;log4j-core 為 provided,Paper runtime 內建)
+- Folia 相容:以 `folia-api` 編譯,manifest 宣告 `folia-supported: true`;外掛不使用排程器、世界或實體 API
+- 建置:`JAVA_HOME=<jdk25> mvn package`(`folia-api`;log4j-core 為 provided,Folia / Paper runtime 內建)
 
 ### 成本 / 收益
 
@@ -147,7 +150,7 @@ datapack `filter`(MC 1.19+ 官方機制)把更低優先層(含原版內建 pack)
 cp dist/BetterRecipeMemory.zip <server>/<level-name>/datapacks/
 
 # 配套外掛(可選,消 log 噪音):
-cp dist/BetterRecipeMemoryPlugin-26.2-1.jar <server>/plugins/
+cp dist/BetterRecipeMemoryFolia-26.2-1.jar <server>/plugins/
 ```
 
 ### 部署前必查:limited_crafting 必須為 false
@@ -188,7 +191,7 @@ artifacts:
     required: true
   - type: paper-plugin
     source: paper-plugin/                           # maven, JAVA_HOME=jdk25 mvn package
-    deploy_file: dist/BetterRecipeMemoryPlugin-26.2-1.jar
+    deploy_file: dist/BetterRecipeMemoryFolia-26.2-1.jar
     scope: plugins/, restart to apply
     required: false                                 # log-noise only; harmless without the datapack
     mechanism: onLoad installs a log4j AbstractFilter on root LoggerConfig; DENY iff

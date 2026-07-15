@@ -1,11 +1,12 @@
-name: BetterRecipeMemoryPlugin
+name: BetterRecipeMemoryFolia
 main: io.github.kuohsuanlo.betterrecipememory.BetterRecipeMemoryPlugin
 version: ${version}
-api-version: '1.21'
+api-version: '26.2'
+folia-supported: true
 load: STARTUP
-description: Companion plugin for the BetterRecipeMemory datapack - suppresses the one-time orphan recipe-advancement cleanup log flood.
+description: Folia/Paper companion for BetterRecipeMemory - suppresses the one-time orphan recipe-advancement cleanup log flood.
 author: kuohsuanlo
-website: https://github.com/kuohsuanlo/BetterRecipeMemory-Datapack
+website: https://github.com/njes9701/BetterRecipeMemory-Datapack
 commands:
   brm:
     description: BetterRecipeMemory — author info (/brm about|help|version)
