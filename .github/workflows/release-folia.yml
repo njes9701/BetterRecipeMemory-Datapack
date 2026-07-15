@@ -1,0 +1,33 @@
+name: Publish Folia release
+
+on:
+  push:
+    tags:
+      - "folia-*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out tagged sources
+        uses: actions/checkout@v4
+
+      - name: Create GitHub release and upload artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$TAG" \
+            dist/BetterRecipeMemoryFolia-26.2-1.jar \
+            dist/BetterRecipeMemory.zip \
+            --title "BetterRecipeMemory Folia 26.2-1" \
+            --notes "Folia 26.2 version ported, built, and integration-tested by Codex.
+
+          Changes:
+          - Declares folia-supported and compiles against the Folia API.
+          - Keeps Paper compatibility; no scheduler, world, or entity API is used.
+          - Loads 1,585 recipes and reduces loaded advancements to 127 in the Folia 26.2 test server.
+          - Includes the Folia companion plugin and refreshed BetterRecipeMemory datapack."
