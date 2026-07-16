@@ -21,7 +21,7 @@ public class BetterRecipeMemoryPlugin extends JavaPlugin {
     static final String AUTHOR_LINE =
             "crafted by 廢土貓大 LogoCat · 廢土 · mcfallout.net";
     static final String REPO =
-            "github.com/njes9701/BetterRecipeMemory-Datapack";
+            "github.com/njes9701/BetterRecipeMemory-Datapack-Folia";
 
     @Override
     public void onLoad() {

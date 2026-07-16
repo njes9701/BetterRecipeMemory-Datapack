@@ -6,7 +6,7 @@ folia-supported: true
 load: STARTUP
 description: Folia/Paper companion for BetterRecipeMemory - suppresses the one-time orphan recipe-advancement cleanup log flood.
 author: kuohsuanlo
-website: https://github.com/njes9701/BetterRecipeMemory-Datapack
+website: https://github.com/njes9701/BetterRecipeMemory-Datapack-Folia
 commands:
   brm:
     description: BetterRecipeMemory — author info (/brm about|help|version)
